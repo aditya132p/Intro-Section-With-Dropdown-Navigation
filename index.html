@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Intro section with dropdown navigation</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        margin-top: 50px;
+        font-size: 11px;
+        text-align: center;
+      }
+
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <img src="./images/logo.svg" alt="LOGO" />
+        <ul class="nav-item">
+          <li class="dropdown">
+            <a href="#"
+              >Features <img src="./images/icon-arrow-down.svg" alt=""
+            /></a>
+            <div class="content">
+              <a href="#"
+                ><img src="./images/icon-todo.svg" alt="" />Todo List</a
+              >
+              <a href="#">
+                <img src="./images/icon-calendar.svg" alt="" />Calander</a
+              >
+              <a href="#">
+                <img src="./images/icon-reminders.svg" alt="" />Reminder</a
+              >
+              <a href="#">
+                <img src="./images/icon-planning.svg" alt="" />Planing</a
+              >
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#"
+              >Company<img src="./images/icon-arrow-down.svg" alt=""
+            /></a>
+            <div class="content">
+              <a href="#">History</a>
+              <a href="#">Our Team</a>
+              <a href="#">blog</a>
+            </div>
+          </li>
+          <li>Careers</li>
+          <li>About</li>
+        </ul>
+        <div class="nav-button">
+          <a href="#">Login</a>
+          <a href="#" class="rounded">Register</a>
+        </div>
+        <div class="ham">
+          <img class="ham-img" src="./images/icon-menu.svg" alt="">
+        </div>
+      </nav>
+      <div class="ham-side">
+        <ul class="nav-item">
+          <li class="dropdown">
+            <a href="#"
+              >Features <img src="./images/icon-arrow-down.svg" alt=""
+            /></a>
+            <div class="content">
+              <a href="#"
+                ><img src="./images/icon-todo.svg" alt="" />Todo List</a
+              >
+              <a href="#">
+                <img src="./images/icon-calendar.svg" alt="" />Calander</a
+              >
+              <a href="#">
+                <img src="./images/icon-reminders.svg" alt="" />Reminder</a
+              >
+              <a href="#">
+                <img src="./images/icon-planning.svg" alt="" />Planing</a
+              >
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#"
+              >Company<img src="./images/icon-arrow-down.svg" alt=""
+            /></a>
+            <div class="content">
+              <a href="#">History</a>
+              <a href="#">Our Team</a>
+              <a href="#">blog</a>
+            </div>
+          </li>
+          <li>Careers</li>
+          <li>About</li>
+        </ul>
+        <div class="nav-button">
+          <a href="#">Login</a>
+          <a href="#" class="rounded">Register</a>
+        </div>
+      </div>
+      <div class="container">
+        <div class="lft">
+          <div class="lft-content">
+            <h1>Make remote work</h1>
+            <p>
+              Get your team in sync, no matter your location. Streamline
+              processes, create team rituals, and watch productivity soar.
+            </p>
+            <button class="rounded">Learn more</button>
+          </div>
+
+          <div class="logo-contain">
+            <img src="./images/client-audiophile.svg" alt="" />
+            <img src="./images/client-databiz.svg" alt="" />
+            <img src="./images/client-maker.svg" alt="" />
+            <img src="./images/client-meet.svg" alt="" />
+          </div>
+        </div>
+        <div class="rht">
+          <img src="./images/image-hero-desktop.png" alt="" class="desktop"/>
+          <img src="./images/image-hero-mobile.png" alt="" class="mobile" >
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Aditya Pawar</a>.
+      </div>
+    </main>
+    <!-- 
+  Features
+  Company
+  Careers
+  About
+
+  Login
+  Register
+
+  Make remote work
+
+  Get your team in sync, no matter your location. Streamline processes, 
+  create team rituals, and watch productivity soar.
+
+  Learn more -->
+    <script>
+      var dropdown = document.querySelectorAll(".dropdown");
+
+      dropdown.forEach(function (dropdownElement) {
+        dropdownElement.addEventListener("mouseenter", function () {
+          var img = dropdownElement.querySelector(".dropdown img");
+          if (img) {
+            img.src = "./images/icon-arrow-up.svg";
+          }
+        });
+
+        dropdownElement.addEventListener("mouseleave", function () {
+          var img = dropdownElement.querySelector(".dropdown img");
+          if (img) {
+            img.src = "./images/icon-arrow-down.svg";
+          }
+        });
+      });
+
+     
+let isMenuOpen = false; // Flag to track menu state
+
+const toggleMenu = () => {
+  const menuElement = document.querySelector(".ham-side");
+  const menuImage = document.querySelector(".ham img");
+
+  if (!isMenuOpen) {
+    menuElement.style.right = "0px";
+    menuElement.style.opacity = "1";
+    menuElement.style.display = "flex";
+    menuImage.src = "./images/icon-close-menu.svg";
+    isMenuOpen = true;
+   
+    console.log("Menu Opened");
+  } else {
+    menuElement.style.right = "-310px";
+    menuElement.style.opacity = "0";
+    menuElement.style.display = "none";
+    menuImage.src = "./images/icon-menu.svg";
+    isMenuOpen = false;
+    
+    console.log("Menu Closed");
+  }
+};
+
+const hamElement = document.querySelector(".ham");
+hamElement.addEventListener('click', toggleMenu);
+
+      
+
+      
+    </script>
+  </body>
+</html>
